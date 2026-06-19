@@ -36,6 +36,17 @@ yarn-error.log*
 # vercel
 .vercel
 
+# netlify
+.netlify
+
+# playwright
+/test-results
+/playwright-report
+/playwright/.cache
+
+# storybook
+/storybook-static
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
