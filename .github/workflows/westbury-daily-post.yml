@@ -1,16 +1,27 @@
 name: Westbury Daily Post
 
 # Posts one Westbury Collections post per day. You can also run it by hand from
-# the Actions tab (the "Run workflow" button) to test it right now.
+# the Actions tab. When you run it by hand you can choose to post immediately.
 #
 # The ONLY secret you must set is BUFFER_API_KEY. The channel is found
-# automatically. (Optional: BUFFER_CHANNEL_IDS to force a specific channel,
-# DRY_RUN=true to test without actually posting.)
+# automatically. (Optional: BUFFER_CHANNEL_IDS to force a specific channel.)
 
 on:
   schedule:
     - cron: "0 8 * * *" # 08:00 UTC = 9am UK (British Summer Time)
-  workflow_dispatch: {} # manual "Run workflow" button
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "How to publish"
+        type: choice
+        default: shareNow
+        options:
+          - shareNow # post immediately
+          - addToQueue # add to your Buffer queue (posts at your scheduled times)
+      dry_run:
+        description: "Test only — build everything but do NOT post"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -26,7 +37,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - run: npm install --no-audit --no-fund
 
@@ -51,5 +62,8 @@ jobs:
         env:
           BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
           BUFFER_CHANNEL_IDS: ${{ secrets.BUFFER_CHANNEL_IDS }}
-          DRY_RUN: ${{ secrets.DRY_RUN }}
+          # Manual runs use the chosen mode; the daily schedule uses addToQueue.
+          BUFFER_POST_MODE: ${{ inputs.mode || 'addToQueue' }}
+          # Manual "dry_run" tickbox, or a DRY_RUN secret, disables real posting.
+          DRY_RUN: ${{ inputs.dry_run || secrets.DRY_RUN }}
         run: npm run publish
