@@ -1,0 +1,19 @@
+{
+  "name": "westbury-automation",
+  "version": "1.0.0",
+  "description": "Daily automated social post generator for Westbury Collections (caption + branded image) that publishes via Buffer.",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "generate": "node scheduler.js generate",
+    "publish": "node scheduler.js publish",
+    "post": "node scheduler.js",
+    "dry-run": "DRY_RUN=true node scheduler.js"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.58"
+  }
+}

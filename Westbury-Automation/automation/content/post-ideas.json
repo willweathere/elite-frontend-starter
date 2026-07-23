@@ -1,0 +1,137 @@
+{
+  "_comment": "Bank of pre-written, rule-compliant Westbury post ideas. The scheduler rotates through these by date so no idea repeats until the whole list has run. Captions are UK English, 80-150 words, no emojis, no hashtags, no invented facts. Facts used come from brand/Brand_Info.md. Edit or add ideas freely; keep to the same shape and the rules. 'layout' is 'left' or 'center'; 'dark' uses the Plum Noir background; 'divider' adds the gold diamond rule.",
+  "ideas": [
+    {
+      "id": "positioning-getting-paid",
+      "category": "Educational",
+      "layout": "left", "dark": false, "divider": false,
+      "eyebrow": "Commercial Debt Recovery",
+      "headline": ["Getting", "you paid."],
+      "subline": "Professionally, and without the friction.",
+      "cta": "Speak with our team — westburycollections.com",
+      "caption": "Chasing an unpaid invoice yourself can feel awkward. You still want to work with the customer, so the conversation gets harder the longer it drags on.\n\nThat is usually the point to bring in a third party. A professional recovery team can make the approach on your behalf, clearly and politely, which often gets things moving without the relationship taking the strain.\n\nOur job is to recover what you are owed while keeping you on good terms with your customer. If a late payment is starting to affect your cashflow, it is worth a conversation.\n\nSpeak with our team to talk it through.",
+      "altText": "Deep red graphic with white serif text reading Getting you paid and the Westbury Collections logo."
+    },
+    {
+      "id": "credibility-110m",
+      "category": "Trust & credibility",
+      "layout": "center", "dark": false, "divider": true,
+      "eyebrow": "Since 2019",
+      "headline": ["£110M+", "recovered."],
+      "subline": "For more than 3,500 UK businesses.",
+      "cta": "westburycollections.com",
+      "caption": "Since 2019 we have recovered more than £110 million for over 3,500 UK businesses. Behind those numbers are thousands of invoices that were finally paid, and business owners who could stop worrying about them.\n\nWe work across the UK for SMEs, construction firms, schools, trades and finance teams. The approach is always the same: professional, transparent, and focused on protecting your relationships while we recover what you are owed.\n\nIf you have invoices that have been outstanding for too long, get in touch to discuss your situation.",
+      "altText": "Red square graphic with white serif text reading £110M+ recovered above a gold divider and the Westbury Collections logo."
+    },
+    {
+      "id": "approach-firm-fair-friendly",
+      "category": "Approach & values",
+      "layout": "left", "dark": true, "divider": false,
+      "eyebrow": "Our Approach",
+      "headline": ["Firm, fair,", "friendly."],
+      "subline": "Recovery that protects the relationship.",
+      "cta": "Speak with our team.",
+      "caption": "Debt recovery has a reputation for being heavy-handed. That is not how we work.\n\nMost customers who owe money are not avoiding you on purpose. Often they have their own cashflow problem, or the invoice simply slipped. A calm, professional approach usually gets a better result than pressure, and it leaves the door open to keep working together.\n\nWe stay firm on getting you paid and fair in how we do it. Being approachable is not a weakness in this work. More often than not, it is what gets the invoice settled.\n\nIf that sounds like the right fit, speak with our team.",
+      "altText": "Dark plum graphic with white serif text reading Firm, fair, friendly and the Westbury Collections logo."
+    },
+    {
+      "id": "creditcontrol-clear-terms",
+      "category": "Cashflow & credit-control tips",
+      "layout": "left", "dark": false, "divider": false,
+      "eyebrow": "Credit Control",
+      "headline": ["Clear terms,", "fewer late", "payments."],
+      "subline": "A few small habits make a real difference.",
+      "cta": "",
+      "caption": "Most late payments are not deliberate. They happen because the process was unclear from the start. A few simple habits help.\n\nAgree payment terms in writing before the work begins. Put the due date on the invoice in plain language, not just thirty days. Send the invoice the day the work is done, rather than at the end of the month. A short, friendly reminder a few days before the due date does more than a chase afterwards.\n\nNone of this is complicated, and it keeps cash moving without any awkward conversations. When an invoice does slip through, that is where we can help.",
+      "altText": "Crimson graphic with white serif text reading Clear terms, fewer late payments and the Westbury Collections logo."
+    },
+    {
+      "id": "relationship-good-terms",
+      "category": "Approach & values",
+      "layout": "left", "dark": false, "divider": false,
+      "eyebrow": "Relationship First",
+      "headline": ["Paid, and", "still on", "good terms."],
+      "subline": "The relationship matters as much as the invoice.",
+      "cta": "Contact us to discuss your situation.",
+      "caption": "When a customer owes you money, it is easy to feel like the relationship is already over. It does not have to be.\n\nA lot of the businesses we recover from go on to keep trading with our clients afterwards. The difference is how the conversation is handled. Calm and professional keeps the door open. Aggressive closes it for good.\n\nWe treat the people who owe you money the way you would want to be treated in a tough month. It protects your reputation, and it often gets the invoice paid sooner.\n\nContact us to discuss your situation.",
+      "altText": "Crimson graphic with white serif text reading Paid, and still on good terms and the Westbury Collections logo."
+    },
+    {
+      "id": "service-tracing",
+      "category": "Service spotlights",
+      "layout": "left", "dark": true, "divider": false,
+      "eyebrow": "Service · Tracing",
+      "headline": ["When a", "debtor goes", "quiet."],
+      "subline": "Our tracing service helps find them.",
+      "cta": "Learn more on our website.",
+      "caption": "Sometimes the problem is not that a customer will not pay. It is that you cannot find them. Businesses move, close, or change hands, and the invoice goes unanswered.\n\nThis is where tracing helps. We locate people and businesses that have become hard to reach, so the debt can be dealt with properly rather than written off.\n\nIt is one of several services we offer alongside collection, litigation and enforcement. If a debtor has gone quiet and you are not sure where to turn next, learn more on our website.",
+      "altText": "Dark plum graphic with white serif text reading When a debtor goes quiet and the Westbury Collections logo."
+    },
+    {
+      "id": "cashflow-stall",
+      "category": "Cashflow & credit-control tips",
+      "layout": "left", "dark": false, "divider": false,
+      "eyebrow": "Cashflow",
+      "headline": ["Late invoices", "stall good", "businesses."],
+      "subline": "There is a calmer way to chase them.",
+      "cta": "Get in touch today.",
+      "caption": "A profitable business can still run into trouble if the money it is owed arrives late. Wages, suppliers and rent do not wait, and every unpaid invoice makes the month harder to plan.\n\nChasing takes time you probably do not have, and it pulls you away from the work that actually pays. That is the real cost of late payment.\n\nBringing in help does not have to feel like a big step. It simply means the chasing gets done properly, by people who do it every day, so you can get back to running the business.\n\nGet in touch today.",
+      "altText": "Crimson graphic with white serif text reading Late invoices stall good businesses and the Westbury Collections logo."
+    },
+    {
+      "id": "faq-when-to-get-help",
+      "category": "FAQs",
+      "layout": "center", "dark": false, "divider": true,
+      "eyebrow": "A Common Question",
+      "headline": ["When should", "you get help?"],
+      "subline": "Usually sooner than you think.",
+      "cta": "Speak with our team.",
+      "caption": "One question we hear a lot is how long to wait before bringing in a recovery firm.\n\nThere is no perfect date, but debts are generally easier to recover the sooner they are dealt with. The longer an invoice sits unpaid, the more likely the customer is to have other problems, or to become harder to reach.\n\nThat does not mean rushing. It means not leaving it for months in the hope it sorts itself out. A quick, professional approach early on often settles things before they become difficult.\n\nIf you are unsure whether it is the right time, speak with our team.",
+      "altText": "Crimson graphic with white serif text reading When should you get help and the Westbury Collections logo."
+    },
+    {
+      "id": "team-real-team",
+      "category": "Behind the scenes / team",
+      "layout": "left", "dark": false, "divider": false,
+      "eyebrow": "The Team",
+      "headline": ["A real team,", "on your", "side."],
+      "subline": "Sixteen people who do this every day.",
+      "cta": "",
+      "caption": "Debt recovery is a people job, not an automated one. Behind every case at Westbury is a real member of our team who picks up the phone and handles it personally.\n\nWe are a team of sixteen, and we have been recovering debts for UK businesses since 2019. That experience matters. Knowing how to read a situation, when to push and when to listen, is what gets results without damaging relationships.\n\nWhen you work with us, you are not sending your invoice into a black box. You are handing it to people who take it seriously.",
+      "altText": "Crimson graphic with white serif text reading A real team, on your side and the Westbury Collections logo."
+    },
+    {
+      "id": "educational-stages",
+      "category": "Educational",
+      "layout": "left", "dark": false, "divider": false,
+      "eyebrow": "How It Works",
+      "headline": ["Recovery,", "step by", "step."],
+      "subline": "Clear communication at every stage.",
+      "cta": "Read our latest insight.",
+      "caption": "If you have never used a recovery firm, the process can feel like a mystery. It does not need to be.\n\nIt usually starts with a professional approach to the customer on your behalf, giving them a clear chance to pay. Most cases are resolved at this stage. If they are not, there are further options, from formal steps through to litigation and enforcement, and we explain each one before anything happens.\n\nYou are kept informed throughout. No surprises, no jargon, and no action taken without you knowing about it first.\n\nRead our latest insight to learn more.",
+      "altText": "Crimson graphic with white serif text reading Recovery, step by step and the Westbury Collections logo."
+    },
+    {
+      "id": "sector-construction",
+      "category": "Sector insight",
+      "layout": "left", "dark": true, "divider": false,
+      "eyebrow": "Sector · Construction",
+      "headline": ["Late payment", "is common in", "construction."],
+      "subline": "We help firms recover what they are owed.",
+      "cta": "Contact us to discuss your situation.",
+      "caption": "Anyone who works in construction knows the pattern. Long payment chains, retentions held back, and invoices that sit unpaid while the next job is already underway.\n\nIt puts real pressure on firms that are otherwise doing well. Chasing payment up the chain takes time and can strain the working relationships you rely on for the next contract.\n\nWe work with construction businesses to recover what they are owed, professionally and without burning bridges. If late payment is holding your firm back, contact us to discuss your situation.",
+      "altText": "Dark plum graphic with white serif text reading Late payment is common in construction and the Westbury Collections logo."
+    },
+    {
+      "id": "myth-not-a-threat",
+      "category": "Myth-busting",
+      "layout": "center", "dark": false, "divider": true,
+      "eyebrow": "A Common Myth",
+      "headline": ["Recovery is", "not a threat."],
+      "subline": "It is a professional conversation.",
+      "cta": "Speak with our team.",
+      "caption": "Some business owners hold off on getting help because they picture aggressive letters and heavy tactics. That is an old idea of what debt recovery is.\n\nDone properly, it is simply a professional conversation, handled by someone impartial, that gives the customer a clear route to settle. No threats, no drama. Just a calm, firm approach that takes the pressure off you.\n\nProtecting your reputation is part of our job. We recover what you are owed in a way you would be comfortable putting your own name to.\n\nIf that changes how you see it, speak with our team.",
+      "altText": "Crimson graphic with white serif text reading Recovery is not a threat and the Westbury Collections logo."
+    }
+  ]
+}
