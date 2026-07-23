@@ -8,11 +8,16 @@ original work in this language** — never copies of past posts, never reused te
 
 ## 1. Brand essence
 
-Westbury feels like a well-made room at dusk: warm, assured, unhurried. The design voice is
-**formal but human** — a confident serif statement followed by a softer italic aside. Everything
-is understated; nothing shouts. If a layout feels busy, it is wrong.
+Westbury Collections Ltd is a **UK commercial debt recovery** firm (founded 2019, Epsom,
+Surrey) — professional, ethical and relationship-first. Despite working in debt recovery, the
+brand **never appears aggressive or threatening**. It is the calm, capable partner that gets
+businesses paid while protecting their customer relationships.
 
-Keywords: premium · warm · British · composed · quietly witty.
+The design voice is **formal but human** — a confident serif statement followed by a softer
+italic aside. Everything is understated and reassuring; nothing shouts. If a layout feels
+busy or a line feels pushy, it is wrong.
+
+Keywords: professional · trustworthy · calm · friendly · confident · knowledgeable · British.
 
 ---
 
@@ -51,7 +56,7 @@ Three voices, never more, always in this hierarchy:
 
 **Headline rules**
 - Short declarative sentences, 2–6 words per line, max 4 lines. Always end with a full stop.
-- Sentence case ("Let the room breathe."), never all-caps headlines.
+- Sentence case ("Getting you paid."), never all-caps headlines.
 - One word may be swapped into gold italic for emphasis (see "Merry *Christmas*" pattern:
   italic gold word above/beside the white roman word).
 
@@ -87,7 +92,7 @@ Never: stretch, recolour outside the palette, outline, drop-shadow, or centre th
   - **B. Centered** (formal): eyebrow, headline, divider, subline centred. Used for
     thank-yous, greetings, milestones.
 - **Footer (every post):** italic sign-off bottom-left ("From all of us at Westbury Collections",
-  or a short CTA such as "Visit the showroom this weekend."), logo lockup bottom-right.
+  or a soft CTA such as "Speak with our team — westburycollections.com"), logo lockup bottom-right.
 
 **Canvas sizes:** Instagram portrait 1080×1350 (default) · Instagram square 1080×1080 ·
 X/Twitter 1200×675.
@@ -96,22 +101,38 @@ X/Twitter 1200×675.
 
 ## 6. Imagery & illustration
 
-- Photography: warm, low-key interior shots; deep shadows; crimson/neutral rooms sit best.
-  When photos are used, apply a Deep Maroon gradient scrim from the top so type stays legible.
-- Illustration: flat, exact, geometric, in palette colours only (see the pumpkin-baubles and
-  hanging-bauble references). One illustrated object per post, integrated with the type
-  (e.g. objects replacing letterforms) — never clip-art scattered around.
-- No stock-photo clichés, no 3D renders, no drop shadows, no gradients outside the palette.
+- Most posts are **typographic** — the headline on the crimson field is the hero. This suits a
+  professional services brand and keeps production fast and consistent.
+- Photography (optional): calm, professional business settings — desks, meetings, UK office/city,
+  the real team. Warm and human, never the "angry red final notice" cliché. Apply a Deep Maroon
+  gradient scrim from the top so type stays legible.
+- Illustration: flat, exact, geometric, palette colours only (see the seasonal references). One
+  object per post, integrated with the type — never clip-art. Use sparingly, for greetings only.
+- No stock-photo clichés, no 3D renders, no drop shadows, no gradients outside the palette,
+  and nothing that reads as intimidating or threatening.
 
 ---
 
-## 7. Voice & copy style
+## 7. Voice & copy style (from the brand's own rules)
 
-- British English. Warm, brief, a little wry when the occasion allows.
-- Statement + aside: the headline states; the italic line adds humanity
-  ("Thank You." / *"To the team who turn up, rain or shine."*).
-- Never invent products, prices, promotions or claims. Facts come only from the content
-  calendar / company brief for that post.
+- **UK English.** Professional, friendly, approachable, confident, clear, human. Write like
+  you're speaking to a business owner.
+- **Short sentences, short paragraphs, active voice.** Simple, natural, conversational.
+- Statement + aside: the headline states; the italic line reassures.
+- **Never:** emojis · hashtags (unless specifically asked) · exclamation-mark overuse · clickbait
+  or curiosity-gap hooks · corporate buzzwords · aggressive or pushy language.
+- **Never:** legal claims · unprovable promises · invented statistics · prices · competitor names.
+- **Facts must be true**, drawn only from the brand brief. Approved facts: £110M+ recovered ·
+  21,000+ debts recovered · 3,500+ clients · 98% client satisfaction · 16 team members ·
+  founded 2019 · nationwide UK service. Services: debt collection, litigation, asset searches,
+  tracing, enforcement, adjudication, insolvency, process serving.
+- **Forbidden words:** unlock, elevate, leverage, journey, game changer, revolutionary,
+  cutting-edge, dive into, delve, thrilled, "excited to announce", "in today's fast-paced world",
+  synergy, seamless, "innovative solutions", best-in-class, world-class, amazing, incredible,
+  "industry-leading" (unless factually proven).
+- **Length:** captions 80–150 words unless instructed otherwise. Don't overuse bold.
+- **CTA:** optional, soft, never pushy — "Speak with our team", "Get in touch today",
+  "Contact us to discuss your situation", "Learn more on our website". Not every post needs one.
 
 ---
 

@@ -1,7 +1,8 @@
 # Westbury Collections — AI Social Media System
 
-A complete, repeatable workflow for producing premium branded social content daily with
-minimal human input.
+A complete, repeatable workflow for producing on-brand social content for **Westbury
+Collections Ltd** — a UK commercial debt recovery firm — daily, with minimal human input.
+Content educates, informs and builds trust; it is calm, professional and never pushy.
 
 ```
 Claude → image + caption → Google Drive + Google Sheet → Make.com → Buffer → Instagram
@@ -33,17 +34,18 @@ Claude → image + caption → Google Drive + Google Sheet → Make.com → Buff
    advances the status.
 4. **Buffer:** publishes at the scheduled slot; Make marks the row `PUBLISHED`.
 
-Truthfulness is enforced structurally: copy may only use facts written into the sheet row,
-and anything involving prices, promotions or customers requires a human to flip
-`NEEDS APPROVAL → READY`.
+Truthfulness is enforced structurally: copy may only use facts from `brand info.txt`, and
+anything involving a legal point, a named client or a new claim requires a human to flip
+`NEEDS APPROVAL → READY`. Post rules (no emojis, no hashtags, UK English, 80–150 words, no
+prices, no invented stats) are baked into the daily prompt and the design system.
 
 ## Regenerating / creating posts
 
 ```bash
 cd generator
 python3 westbury_post.py                                   # example set
-python3 westbury_post.py out.png portrait "DESIGN NOTES" \
-        "Let the|room|breathe." "Space is the quietest luxury."
+python3 westbury_post.py out.png portrait "COMMERCIAL DEBT RECOVERY" \
+        "Getting|you paid." "Professionally, and without the friction."
 ```
 
 Fonts: Gloock (headlines), Crimson Pro (+Italic), Lora — all Google Fonts (OFL); update

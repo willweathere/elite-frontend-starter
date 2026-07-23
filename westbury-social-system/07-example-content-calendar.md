@@ -1,73 +1,84 @@
-# Example 7-Day Content Calendar
+# Example Content Calendar — Westbury Collections
 
-A worked example week showing the full output the daily system produces. All copy is original
-and fact-free by design — where a real fact belongs, the brief in the sheet supplies it.
-Hashtag sets rotate; never paste the identical block twice in a row.
+A worked example week. All copy follows the brand's post rules: UK English, 80–150 words, no
+emojis, no hashtags, no prices, no invented facts, calm and never pushy. Facts used are only
+those in `brand info.txt`. Captions here are illustrative — a human should confirm any specific
+claim before publishing.
 
 ---
 
-## Monday — Design tips *(Layout A, portrait)*
-- **Image:** eyebrow `DESIGN NOTES` · headline "Let the / room / breathe." · gold italic
-  subline "Space is the quietest luxury." *(see example-posts/01)*
-- **Caption:** The most expensive thing in a beautiful room is often what isn't there.
-  Leaving space around a favourite piece lets it hold the room — and lets you actually see it.
-- **CTA:** Save this for your next rearrange.
-- **Hashtags:** #WestburyCollections #InteriorDesignTips #LuxuryInteriors #TimelessDesign
-  #HomeStyling #InteriorInspo #ConsideredLiving #BritishInteriors
-- **Alt text:** Deep red graphic with white serif text reading "Let the room breathe" and the
+## Monday — Educational: how it works *(Layout A, portrait)*
+- **Image:** eyebrow `COMMERCIAL DEBT RECOVERY` · headline "Getting / you paid." · gold italic
+  subline "Professionally, and without the friction." *(see example-posts/01)*
+- **Caption:**
+  Chasing an unpaid invoice yourself can feel awkward. You still want to work with the customer,
+  so the conversation gets harder the longer it drags on.
+
+  That is usually the point to bring in a third party. A professional recovery team can make the
+  approach for you — clearly, politely, and on your behalf — which often gets things moving
+  without the relationship taking the strain.
+
+  Our job is to recover what you are owed while keeping you on good terms with your customer. If
+  a late payment is starting to affect your cashflow, it is worth a conversation.
+
+  Speak with our team to talk it through.
+- **Alt text:** Deep red graphic with white serif text reading "Getting you paid" and the
   Westbury Collections logo.
 
-## Tuesday — Product showcase *(photography-led, portrait)*
-- **Image:** hero photo of the featured piece (from the brief) with a Deep Maroon scrim,
-  eyebrow `NEW IN THE COLLECTION`, one-line headline naming the piece, lockup bottom-right.
-- **Caption:** built strictly from the facts supplied in the sheet row (materials, finish,
-  origin). Two sentences: what it is, why it earns its place.
-- **CTA:** Enquire via the link in bio.
-- **Alt text:** Photograph of [piece] against a deep red background with the Westbury logo.
+## Tuesday — Cashflow & credit-control tips *(Layout A, portrait)*
+- **Image:** eyebrow `CREDIT CONTROL` · headline "Clear terms, / fewer / late payments." ·
+  subline "A few small habits make a real difference."
+- **Caption:**
+  Most late payments are not deliberate. They happen because the process was unclear from the
+  start. A few simple habits help.
 
-## Wednesday — rest day
-- Stories only: repost Monday's tip with a poll ("Which wall would you clear first?").
+  Agree payment terms in writing before the work begins. Put the due date on the invoice in
+  plain language, not just "30 days". Send the invoice the day the work is done, not the end of
+  the month. A short, friendly reminder a few days before the due date does more than a chase
+  afterwards.
 
-## Thursday — Interior inspiration *(Layout A, portrait)*
-- **Image:** eyebrow `ROOMS WE LOVE` · headline "Warm woods, / soft light." · subline
-  "An evening palette that never dates."
-- **Caption:** Some palettes chase the season; this one outlasts it. Warm timber, low light
-  and one deep accent colour will carry a room from July to January.
-- **CTA:** Which room would you try it in? Tell us below.
-- **Hashtags:** #WestburyCollections #InteriorInspiration #WarmMinimalism #LuxuryHome
-  #InteriorStyling #DesignLovers #HomeDecorIdeas #ElegantInteriors
-- **Alt text:** Crimson graphic with white serif text reading "Warm woods, soft light" and the
+  None of this is complicated, and it keeps cash moving without any awkward conversations. When
+  an invoice does slip through, that is where we can help.
+- **Alt text:** Crimson graphic with white serif text reading "Clear terms, fewer late payments"
+  and the Westbury Collections logo.
+
+## Wednesday — rest *(LinkedIn-only short insight, optional)*
+- Optional text-only LinkedIn note on one late-payment statistic from a public UK source (human
+  to supply and verify the figure). No graphic required.
+
+## Thursday — Trust & credibility *(Layout B centered, square)*
+- **Image:** eyebrow `SINCE 2019` · headline "£110M+ / recovered." · gold divider · subline
+  "For more than 3,500 UK businesses." *(see example-posts/02)*
+- **Caption:**
+  Since 2019 we have recovered more than £110 million for over 3,500 UK businesses. Behind those
+  numbers are thousands of invoices that were finally paid, and business owners who could stop
+  worrying about them.
+
+  We work across the UK for SMEs, construction firms, schools, trades and finance teams. The
+  approach is always the same: professional, transparent, and focused on protecting your
+  relationships while we recover what you are owed.
+
+  If you have invoices that have been outstanding for too long, get in touch to discuss your
+  situation.
+- **Alt text:** Red square graphic with white serif text reading "£110M+ recovered" above a gold
+  divider and the Westbury Collections logo.
+
+## Friday — Approach / myth-busting *(Layout A landscape for X, portrait for IG)*
+- **Image:** eyebrow `OUR APPROACH` · headline "Firm, fair, / friendly." · subline "Recovery
+  that protects the relationship." · Plum Noir variant *(see example-posts/03)*
+- **Caption:**
+  Debt recovery has a reputation for being heavy-handed. That is not how we work.
+
+  Most customers who owe money are not avoiding you on purpose. Often they have their own
+  cashflow problem, or the invoice simply slipped. A calm, professional approach usually gets a
+  better result than pressure, and it leaves the door open to keep working together.
+
+  We stay firm on getting you paid and fair in how we do it. Being approachable is not a
+  weakness in this work. More often than not, it is what gets the invoice settled.
+
+  If that sounds like the right fit, speak with our team.
+- **Alt text:** Dark plum graphic with white serif text reading "Firm, fair, friendly" and the
   Westbury Collections logo.
 
-## Friday — Brand storytelling *(Layout B centered, square)*
-- **Image:** eyebrow `THE WESTBURY WAY` · headline "Crafted for the / way you live." ·
-  gold divider · subline "Considered pieces. Timeless rooms." *(see example-posts/02)*
-- **Caption:** We've never been interested in filling rooms. We're interested in the one piece
-  you'll still be pleased with in twenty years — chosen slowly, made properly.
-- **CTA:** Read more about how we work — link in bio.
-- **Hashtags:** #WestburyCollections #BrandStory #CraftedNotMade #TimelessInteriors
-  #QualityOverQuantity #BritishCraftsmanship #InteriorPhilosophy
-- **Alt text:** Red square graphic with white serif text reading "Crafted for the way you
-  live" above a gold divider and the Westbury Collections logo.
-
-## Saturday — Showroom *(photography or Layout A, portrait)*
-- **Image:** eyebrow `THE SHOWROOM` · headline "Better in / person." · subline "Kettle's on."
-- **Caption:** Photographs flatten things. Come and see how the pieces actually sit in a room
-  — take your time, ask awkward questions, bring your measurements.
-- **CTA:** Doors open Saturday — details in bio.
-- **Hashtags:** #WestburyCollections #Showroom #VisitUs #InteriorShopping #SeeItInPerson
-  #WeekendPlans #HomeInspiration
-- **Alt text:** Deep red graphic with white serif text reading "Better in person" and the
-  Westbury Collections logo.
-
-## Sunday — Seasonal greeting *(Layout A landscape for X, portrait for IG — only when the
-calendar calls for it)*
-- **Image:** eyebrow `AUTUMN AT WESTBURY` · headline "Season of warmth." · subline "Rich
-  tones, soft light, rooms to come home to." · Plum Noir variant *(see example-posts/03)*
-- **Caption:** The light drops, the palette deepens, and rooms start earning their keep.
-  Here's to the season spent mostly indoors — on purpose.
-- **CTA:** From all of us at Westbury Collections.
-- **Hashtags:** #WestburyCollections #AutumnInteriors #CosySeason #SeasonalStyle
-  #WarmInteriors #AutumnAtHome
-- **Alt text:** Dark plum graphic with white serif text reading "Season of warmth" and the
-  Westbury Collections logo.
+## Weekend — rest
+- No B2B posting at weekends unless a seasonal greeting is scheduled (kept tasteful, on-brand).
