@@ -61,7 +61,7 @@ jobs:
       - name: Publish to Buffer
         env:
           BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
-          BUFFER_PROFILE_IDS: ${{ secrets.BUFFER_PROFILE_IDS }}
+          BUFFER_CHANNEL_IDS: ${{ secrets.BUFFER_CHANNEL_IDS }}
           # Set DRY_RUN to "true" in the Actions inputs/secrets to test without posting.
           DRY_RUN: ${{ secrets.DRY_RUN }}
         run: npm run publish

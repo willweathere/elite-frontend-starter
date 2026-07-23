@@ -86,17 +86,32 @@ npm run generate
 
 You need two values from Buffer:
 
-- **`BUFFER_API_KEY`** — your Buffer access token.
-- **`BUFFER_PROFILE_IDS`** — the id of the Buffer channel(s) to post to. If you have more than
-  one, separate them with commas (e.g. `1234abcd,5678efgh`).
+- **`BUFFER_API_KEY`** — your Buffer personal API key, from **Buffer → Settings → API**.
+- **`BUFFER_CHANNEL_IDS`** — the id of the Buffer channel(s) to post to. Find these by running
+  `BUFFER_API_KEY=your_key npm run channels` (see below). More than one? Separate with commas
+  (e.g. `1234abcd,5678efgh`).
 
-To add them:
+> Buffer replaced its old REST API with a GraphQL API (`https://api.buffer.com`). This project
+> uses the new one. A key from Settings > API is the right kind; an old REST/OAuth token will be
+> rejected with a 401 error.
+
+**Finding your channel IDs:**
+
+```bash
+cd Westbury-Automation/automation
+npm install
+BUFFER_API_KEY=your_key_here npm run channels
+```
+
+It prints each connected channel with its `id`. Copy the one(s) you want.
+
+To add the secrets:
 
 1. Push this project to GitHub (see step 3).
 2. On GitHub, open your repository → **Settings** → **Secrets and variables** → **Actions**.
 3. Click **New repository secret** and add:
-   - Name `BUFFER_API_KEY`, value = your Buffer token.
-   - Name `BUFFER_PROFILE_IDS`, value = your Buffer profile id(s).
+   - Name `BUFFER_API_KEY`, value = your Buffer API key.
+   - Name `BUFFER_CHANNEL_IDS`, value = your channel id(s).
 4. (Optional) Add a secret named `DRY_RUN` with value `true` while you are testing — the workflow
    will do everything except actually send to Buffer. Delete it (or set it to `false`) when you
    are ready to go live.
@@ -178,11 +193,13 @@ You can also add your own file (e.g. `providers/canva.js`) and register it in
 
 ## 7. Important notes on Buffer
 
-- This uses Buffer's post-creation API with an access token. Make sure your Buffer account and
-  plan allow API access, and that the profile id(s) you use are connected and authorised.
-- Posts are added to your Buffer **queue**, so they publish at the times you set inside Buffer.
-- If a run fails, open the **Actions** tab on GitHub and read the log — `buffer.js` prints a
-  clear reason (missing key, missing profile id, timeout, or the message Buffer returned).
+- This uses Buffer's current **GraphQL API** (`https://api.buffer.com`) with a personal API key.
+  Make sure your Buffer account and plan allow API access.
+- Posts are added to your Buffer **queue** (`mode: addToQueue`), so they publish at the times you
+  set inside Buffer. Make sure the channel has a posting schedule set, and its queue is not paused.
+- If a run fails, open the **Actions** tab on GitHub and read the log — `buffer.js` prints a clear
+  reason (missing key, missing channel id, a 401 for a wrong key type, timeout, or the message
+  Buffer returned).
 
 ---
 
@@ -193,4 +210,5 @@ npm run dry-run    # generate everything, do NOT post (safe test)
 npm run generate   # generate caption + image only
 npm run publish    # send the already-generated post.json to Buffer
 npm run post       # generate then publish
+npm run channels   # list your Buffer channel IDs (needs BUFFER_API_KEY)
 ```

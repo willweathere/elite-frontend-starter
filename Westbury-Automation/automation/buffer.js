@@ -1,63 +1,24 @@
 // buffer.js
 // -----------------------------------------------------------------------------
-// Sends a finished post (caption + image URL) to Buffer, which then publishes it
-// to the connected social account on schedule.
+// Sends a finished post (caption + image URL) to Buffer using Buffer's current
+// GraphQL API (https://api.buffer.com). Buffer then publishes it to the
+// connected channel on your queue schedule.
 //
-// SECURITY: the API key and profile IDs are read ONLY from environment variables
-// (GitHub Secrets). They are never written to disk, never logged, and never
-// committed. Do not pass them as function arguments from other files.
+// SECURITY: the API key and channel IDs are read ONLY from environment
+// variables (GitHub Secrets). They are never written to disk, never logged,
+// and never committed.
 //
 //   Required environment variables:
-//     BUFFER_API_KEY      - your Buffer access token
-//     BUFFER_PROFILE_IDS  - comma-separated Buffer profile id(s) to post to
+//     BUFFER_API_KEY       - your Buffer personal API key (Settings > API)
+//     BUFFER_CHANNEL_IDS   - comma-separated channel id(s) to post to
 //   Optional:
-//     DRY_RUN=true        - prepare the request but do NOT actually send it
+//     DRY_RUN=true         - prepare the request but do NOT actually send it
 // -----------------------------------------------------------------------------
 
-const BUFFER_API = "https://api.bufferapp.com/1/updates/create.json";
+const BUFFER_API = "https://api.buffer.com";
 
-// Buffer needs a publicly reachable image URL (it fetches the image itself).
-// This project provides that by committing the PNG to the repo and using its
-// raw GitHub URL — see scheduler.js and the workflow.
-export async function publishToBuffer({ text, imageUrl, altText } = {}) {
-  const token = process.env.BUFFER_API_KEY;
-  const profileIds = (process.env.BUFFER_PROFILE_IDS || "")
-    .split(",")
-    .map((s) => s.trim())
-    .filter(Boolean);
-  const dryRun = String(process.env.DRY_RUN).toLowerCase() === "true";
-
-  // --- validate inputs before doing anything ---
-  if (!text || !text.trim()) throw new Error("publishToBuffer: 'text' is empty.");
-  if (!dryRun && !token) {
-    throw new Error("publishToBuffer: BUFFER_API_KEY is not set (add it as a GitHub Secret).");
-  }
-  if (!dryRun && profileIds.length === 0) {
-    throw new Error(
-      "publishToBuffer: BUFFER_PROFILE_IDS is not set. Add the id(s) of the Buffer " +
-        "channel(s) to post to, comma-separated, as a GitHub Secret."
-    );
-  }
-
-  // --- build the form body (Buffer's classic API is form-encoded) ---
-  const body = new URLSearchParams();
-  body.set("text", text);
-  for (const id of profileIds) body.append("profile_ids[]", id);
-  if (imageUrl) {
-    body.set("media[photo]", imageUrl);
-    body.set("media[thumbnail]", imageUrl);
-    if (altText) body.set("media[description]", altText);
-  }
-
-  if (dryRun) {
-    console.log("[buffer] DRY_RUN — not sending. Prepared post:");
-    console.log("         profiles:", profileIds.length ? profileIds : "(none set)");
-    console.log("         imageUrl:", imageUrl || "(none)");
-    console.log("         text:", text.slice(0, 80).replace(/\n/g, " ") + "…");
-    return { success: true, dryRun: true };
-  }
-
-  // --- send, with a timeout and clear error handling ---
+// Low-level GraphQL caller. Throws on network, HTTP, or GraphQL errors.
+export async function bufferGraphQL(query, token) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 20000);
   let res;
@@ -66,14 +27,14 @@ export async function publishToBuffer({ text, imageUrl, altText } = {}) {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/json",
       },
-      body: body.toString(),
+      body: JSON.stringify({ query }),
       signal: controller.signal,
     });
   } catch (err) {
-    if (err.name === "AbortError") throw new Error("publishToBuffer: request to Buffer timed out.");
-    throw new Error(`publishToBuffer: network error contacting Buffer — ${err.message}`);
+    if (err.name === "AbortError") throw new Error("Buffer request timed out.");
+    throw new Error(`Network error contacting Buffer — ${err.message}`);
   } finally {
     clearTimeout(timeout);
   }
@@ -82,17 +43,73 @@ export async function publishToBuffer({ text, imageUrl, altText } = {}) {
   let data;
   try { data = JSON.parse(raw); } catch { data = { raw }; }
 
-  if (!res.ok) {
-    // Do not print the token; only the response body from Buffer.
+  if (res.status === 401) {
     throw new Error(
-      `publishToBuffer: Buffer returned HTTP ${res.status}. ` +
-        `Response: ${JSON.stringify(data)}`
+      "Buffer returned 401 Unauthorized. Check BUFFER_API_KEY is a current " +
+        "Buffer API key from Settings > API (not an old REST token)."
     );
   }
-  if (data && data.success === false) {
-    throw new Error(`publishToBuffer: Buffer rejected the post — ${data.message || raw}`);
+  if (!res.ok) throw new Error(`Buffer returned HTTP ${res.status}: ${JSON.stringify(data)}`);
+  if (data.errors) throw new Error(`Buffer GraphQL error: ${JSON.stringify(data.errors)}`);
+  return data.data;
+}
+
+// Build the createPost mutation. Values are JSON-stringified so quotes, newlines
+// and other characters in the caption are safely escaped. Enums stay unquoted.
+function createPostMutation({ text, channelId, imageUrl }) {
+  const assets = imageUrl ? `assets: [{ image: { url: ${JSON.stringify(imageUrl)} } }]` : "";
+  return `
+    mutation {
+      createPost(input: {
+        text: ${JSON.stringify(text)}
+        channelId: ${JSON.stringify(channelId)}
+        schedulingType: automatic
+        mode: addToQueue
+        ${assets}
+      }) {
+        ... on PostActionSuccess { post { id status } }
+        ... on MutationError { message }
+      }
+    }`;
+}
+
+export async function publishToBuffer({ text, imageUrl } = {}) {
+  const token = process.env.BUFFER_API_KEY;
+  const channelIds = (process.env.BUFFER_CHANNEL_IDS || process.env.BUFFER_PROFILE_IDS || "")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const dryRun = String(process.env.DRY_RUN).toLowerCase() === "true";
+
+  if (!text || !text.trim()) throw new Error("publishToBuffer: 'text' is empty.");
+  if (!dryRun && !token) {
+    throw new Error("publishToBuffer: BUFFER_API_KEY is not set (add it as a GitHub Secret).");
+  }
+  if (!dryRun && channelIds.length === 0) {
+    throw new Error(
+      "publishToBuffer: BUFFER_CHANNEL_IDS is not set. Run `npm run channels` to find your " +
+        "channel id(s), then add them (comma-separated) as a GitHub Secret."
+    );
   }
 
-  console.log("[buffer] Post sent to Buffer queue.");
-  return data;
+  if (dryRun) {
+    console.log("[buffer] DRY_RUN — not sending. Prepared post:");
+    console.log("         channels:", channelIds.length ? channelIds : "(none set)");
+    console.log("         imageUrl:", imageUrl || "(none)");
+    console.log("         text:", text.slice(0, 80).replace(/\n/g, " ") + "…");
+    return { success: true, dryRun: true };
+  }
+
+  // The new API posts to one channel at a time — loop over the requested ids.
+  const results = [];
+  for (const channelId of channelIds) {
+    const data = await bufferGraphQL(createPostMutation({ text, channelId, imageUrl }), token);
+    const r = data && data.createPost;
+    if (r && r.message) {
+      throw new Error(`Buffer rejected the post for channel ${channelId}: ${r.message}`);
+    }
+    console.log(`[buffer] Post queued for channel ${channelId} (id: ${r?.post?.id || "?"}).`);
+    results.push(r);
+  }
+  return results;
 }
