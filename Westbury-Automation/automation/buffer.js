@@ -94,6 +94,24 @@ function createPostMutation({ text, channelId, imageUrl, mode }) {
     }`;
 }
 
+// Character limits per platform. Only trim where the platform actually needs it;
+// LinkedIn allows long posts, so it keeps the full caption.
+const CHAR_LIMIT = { twitter: 280, x: 280 };
+
+// Trim a caption to a limit at a sentence or word boundary, adding an ellipsis.
+export function trimForLimit(text, limit) {
+  const t = text.trim();
+  if ([...t].length <= limit) return t;
+  const room = limit - 1; // leave space for the ellipsis
+  let slice = t.slice(0, room);
+  // Prefer to end on a sentence; otherwise fall back to a word boundary.
+  const lastStop = Math.max(slice.lastIndexOf(". "), slice.lastIndexOf("? "), slice.lastIndexOf("! "));
+  if (lastStop > room * 0.5) return slice.slice(0, lastStop + 1);
+  const lastSpace = slice.lastIndexOf(" ");
+  if (lastSpace > room * 0.5) slice = slice.slice(0, lastSpace);
+  return slice.replace(/[\s,;:.\-–—]+$/, "") + "…";
+}
+
 export async function publishToBuffer({ text, imageUrl } = {}) {
   const token = process.env.BUFFER_API_KEY;
   let channelIds = (process.env.BUFFER_CHANNEL_IDS || process.env.BUFFER_PROFILE_IDS || "")
@@ -110,15 +128,21 @@ export async function publishToBuffer({ text, imageUrl } = {}) {
     throw new Error("publishToBuffer: BUFFER_API_KEY is not set (add it as a GitHub Secret).");
   }
 
-  // If no channel id was provided, find it automatically from the account. This
-  // means the only secret you strictly need is BUFFER_API_KEY.
-  if (!dryRun && channelIds.length === 0 && token) {
-    const found = await getChannels(token);
-    channelIds = found.map((c) => c.id);
+  // Look up the account's channels once. This gives us both auto-discovery (when
+  // no id is provided) and each channel's service, so we can respect per-platform
+  // limits like Twitter/X's 280 characters.
+  let allChannels = [];
+  if (!dryRun && token) allChannels = await getChannels(token).catch(() => []);
+  const serviceOf = new Map(
+    allChannels.map((c) => [c.id, String(c.service || "").toLowerCase()])
+  );
+
+  if (!dryRun && channelIds.length === 0) {
+    channelIds = allChannels.map((c) => c.id);
     if (channelIds.length) {
       console.log(
         `[buffer] Auto-discovered ${channelIds.length} channel(s): ` +
-          found.map((c) => `${c.service} (${c.displayName || c.name})`).join(", ")
+          allChannels.map((c) => `${c.service} (${c.displayName || c.name})`).join(", ")
       );
     }
   }
@@ -138,11 +162,21 @@ export async function publishToBuffer({ text, imageUrl } = {}) {
     return { success: true, dryRun: true };
   }
 
-  // The new API posts to one channel at a time — loop over the requested ids.
+  // The new API posts to one channel at a time — loop over the requested ids,
+  // trimming the caption to fit each platform's character limit.
   const results = [];
   for (const channelId of channelIds) {
+    const service = serviceOf.get(channelId) || "unknown";
+    const limit = CHAR_LIMIT[service];
+    let outText = text;
+    if (limit) {
+      outText = trimForLimit(text, limit);
+      if (outText !== text.trim()) {
+        console.log(`[buffer] Caption trimmed to ${[...outText].length} chars for ${service}.`);
+      }
+    }
     const data = await bufferGraphQL(
-      createPostMutation({ text, channelId, imageUrl, mode }),
+      createPostMutation({ text: outText, channelId, imageUrl, mode }),
       token
     );
     const r = data && data.createPost;
