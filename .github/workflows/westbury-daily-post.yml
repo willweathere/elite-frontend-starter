@@ -8,7 +8,12 @@ name: Westbury Daily Post
 
 on:
   schedule:
-    - cron: "0 8 * * *" # 08:00 UTC = 9am UK (British Summer Time)
+    # Cron is always UTC and cannot follow British Summer Time. So we fire at
+    # BOTH 08:00 and 09:00 UTC, and the "gate" job below lets exactly one of
+    # them through — the one that is 09:00 in London (08:00 UTC in summer,
+    # 09:00 UTC in winter). Net result: it posts at 9am UK all year round.
+    - cron: "0 8 * * *"
+    - cron: "0 9 * * *"
   workflow_dispatch:
     inputs:
       mode:
@@ -27,7 +32,32 @@ permissions:
   contents: write
 
 jobs:
+  # Gate: on a schedule, only continue when it is 9am in London. A manual run
+  # always continues. This is what makes 9am UK correct in both summer and winter.
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      go: ${{ steps.check.outputs.go }}
+    steps:
+      - id: check
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "Manual run — continuing."
+            echo "go=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          HOUR=$(TZ="Europe/London" date +%H)
+          echo "Current London hour: $HOUR"
+          if [ "$HOUR" = "09" ]; then
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=false" >> "$GITHUB_OUTPUT"
+            echo "Not 9am in London — skipping this run."
+          fi
+
   daily-post:
+    needs: gate
+    if: needs.gate.outputs.go == 'true'
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -84,8 +114,9 @@ jobs:
         env:
           BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
           BUFFER_CHANNEL_IDS: ${{ secrets.BUFFER_CHANNEL_IDS }}
-          # Manual runs use the chosen mode; the daily schedule uses addToQueue.
-          BUFFER_POST_MODE: ${{ inputs.mode || 'addToQueue' }}
+          # Post immediately: the scheduled 9am run publishes now (not just queued).
+          # Manual runs use the chosen mode.
+          BUFFER_POST_MODE: ${{ inputs.mode || 'shareNow' }}
           # Manual "dry_run" tickbox, or a DRY_RUN secret, disables real posting.
           DRY_RUN: ${{ inputs.dry_run || secrets.DRY_RUN }}
         run: npm run publish
