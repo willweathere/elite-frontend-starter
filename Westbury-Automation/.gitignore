@@ -1,0 +1,16 @@
+# Node
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# Secrets — never commit these
+.env
+.env.*
+*.key
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# NOTE: the /output folder IS committed on purpose. Buffer fetches the post
+# image from its public GitHub raw URL, so the generated PNG must be pushed.
