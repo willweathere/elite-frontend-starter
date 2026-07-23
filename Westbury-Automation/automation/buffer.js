@@ -76,7 +76,8 @@ export async function getChannels(token) {
 
 // Build the createPost mutation. Values are JSON-stringified so quotes, newlines
 // and other characters in the caption are safely escaped. Enums stay unquoted.
-function createPostMutation({ text, channelId, imageUrl }) {
+// mode: "addToQueue" (posts at your Buffer schedule) or "shareNow" (posts now).
+function createPostMutation({ text, channelId, imageUrl, mode }) {
   const assets = imageUrl ? `assets: [{ image: { url: ${JSON.stringify(imageUrl)} } }]` : "";
   return `
     mutation {
@@ -84,7 +85,7 @@ function createPostMutation({ text, channelId, imageUrl }) {
         text: ${JSON.stringify(text)}
         channelId: ${JSON.stringify(channelId)}
         schedulingType: automatic
-        mode: addToQueue
+        mode: ${mode}
         ${assets}
       }) {
         ... on PostActionSuccess { post { id status } }
@@ -100,6 +101,9 @@ export async function publishToBuffer({ text, imageUrl } = {}) {
     .map((s) => s.trim())
     .filter(Boolean);
   const dryRun = String(process.env.DRY_RUN).toLowerCase() === "true";
+  // How to publish: addToQueue (default) or shareNow (post immediately).
+  const modeRaw = (process.env.BUFFER_POST_MODE || "addToQueue").trim();
+  const mode = ["addToQueue", "shareNow"].includes(modeRaw) ? modeRaw : "addToQueue";
 
   if (!text || !text.trim()) throw new Error("publishToBuffer: 'text' is empty.");
   if (!dryRun && !token) {
@@ -127,6 +131,7 @@ export async function publishToBuffer({ text, imageUrl } = {}) {
 
   if (dryRun) {
     console.log("[buffer] DRY_RUN — not sending. Prepared post:");
+    console.log("         mode:    ", mode);
     console.log("         channels:", channelIds.length ? channelIds : "(none set)");
     console.log("         imageUrl:", imageUrl || "(none)");
     console.log("         text:", text.slice(0, 80).replace(/\n/g, " ") + "…");
@@ -136,12 +141,16 @@ export async function publishToBuffer({ text, imageUrl } = {}) {
   // The new API posts to one channel at a time — loop over the requested ids.
   const results = [];
   for (const channelId of channelIds) {
-    const data = await bufferGraphQL(createPostMutation({ text, channelId, imageUrl }), token);
+    const data = await bufferGraphQL(
+      createPostMutation({ text, channelId, imageUrl, mode }),
+      token
+    );
     const r = data && data.createPost;
     if (r && r.message) {
       throw new Error(`Buffer rejected the post for channel ${channelId}: ${r.message}`);
     }
-    console.log(`[buffer] Post queued for channel ${channelId} (id: ${r?.post?.id || "?"}).`);
+    const verb = mode === "shareNow" ? "posted now" : "queued";
+    console.log(`[buffer] Post ${verb} for channel ${channelId} (id: ${r?.post?.id || "?"}).`);
     results.push(r);
   }
   return results;
