@@ -11,7 +11,8 @@
     "generate": "node scheduler.js generate",
     "publish": "node scheduler.js publish",
     "post": "node scheduler.js",
-    "dry-run": "DRY_RUN=true node scheduler.js"
+    "dry-run": "DRY_RUN=true node scheduler.js",
+    "profiles": "node list-profiles.js"
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.58"
