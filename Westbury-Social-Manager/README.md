@@ -79,6 +79,15 @@ This produces, in the `release/` folder:
 > Packaging must run on Windows (or a Windows CI runner). It cannot be produced from macOS/Linux
 > without extra cross-build tooling.
 
+The app has a branded icon (`build/icon.ico`) — it shows in the taskbar, Start menu and installer.
+
+### Pin to the taskbar
+1. Run the installer `.exe` (it creates a Start-menu and desktop shortcut).
+2. Launch **Westbury Social Manager**.
+3. Right-click its icon in the taskbar → **Pin to taskbar**.
+
+(You can also right-click the desktop/Start-menu shortcut → **Pin to taskbar** without launching first.)
+
 ---
 
 ## How it connects (architecture)

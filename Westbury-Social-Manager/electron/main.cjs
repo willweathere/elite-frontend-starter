@@ -6,6 +6,7 @@
 const path = require("path");
 const { app, BrowserWindow, ipcMain, shell } = require("electron");
 
+const APP_ICON = path.join(__dirname, "..", "build", "icon.png");
 const { publicConfig } = require("./services/config.cjs");
 const automation = require("./services/automation.cjs");
 const github = require("./services/github.cjs");
@@ -21,6 +22,7 @@ function createWindow() {
     minHeight: 680,
     backgroundColor: "#2a0710",
     title: "Westbury Social Manager",
+    icon: APP_ICON,
     webPreferences: {
       preload: path.join(__dirname, "preload.cjs"),
       contextIsolation: true,
@@ -80,6 +82,10 @@ function registerIpc() {
 }
 
 app.whenReady().then(() => {
+  // Windows taskbar identity — makes grouping and pinning use our app + icon.
+  if (process.platform === "win32") {
+    app.setAppUserModelId("com.westburycollections.socialmanager");
+  }
   registerIpc();
   createWindow();
   app.on("activate", () => {
