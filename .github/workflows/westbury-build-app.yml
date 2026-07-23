@@ -1,0 +1,40 @@
+name: Build Westbury Social Manager (.exe)
+
+# Builds the Windows desktop app on a GitHub-hosted Windows runner and uploads
+# the installer + portable .exe as downloadable artifacts. Run it from the
+# Actions tab (Run workflow), then download the result — no local Node needed.
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - "Westbury-Social-Manager/**"
+      - ".github/workflows/westbury-build-app.yml"
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: Westbury-Social-Manager
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Build the Windows app
+        run: npm run dist
+
+      - name: Upload installer + portable exe
+        uses: actions/upload-artifact@v4
+        with:
+          name: Westbury-Social-Manager-windows
+          path: |
+            Westbury-Social-Manager/release/*.exe
+          if-no-files-found: error
