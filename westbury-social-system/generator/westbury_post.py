@@ -240,6 +240,21 @@ EXAMPLES = [
          eyebrow="Autumn at Westbury", layout="left", dark=True, seed=5,
          headline_lines=["Season of warmth."],
          subline="Rich tones, soft light, rooms to come home to."),
+    dict(path="example-posts/04-completed-project-portrait.png", size_name="portrait",
+         eyebrow="A Project Completed", layout="left", seed=41,
+         headline_lines=["Handed over.", "Finally", "home."],
+         subline="The day a house starts to feel like one.",
+         signoff="See the finished rooms — link in bio."),
+    dict(path="example-posts/05-educational-square.png", size_name="square",
+         eyebrow="Good To Know", layout="center", divider=True, seed=67,
+         headline_lines=["Buy once.", "Buy well."],
+         subline="The quiet economics of quality.",
+         signoff="Save this for your next big decision."),
+    dict(path="example-posts/06-behind-the-scenes-portrait.png", size_name="portrait",
+         eyebrow="Behind The Scenes", layout="left", dark=True, seed=88,
+         headline_lines=["Checked twice", "before it", "leaves us."],
+         subline="Every piece, inspected by hand.",
+         signoff="From all of us at Westbury Collections."),
 ]
 
 if __name__ == "__main__":
