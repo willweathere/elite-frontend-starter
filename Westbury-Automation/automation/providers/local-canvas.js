@@ -35,7 +35,7 @@ function ensureFonts() {
 // ---- Brand palette (from Design_Rules.md) -----------------------------------
 const C = {
   crimsonDeep: [63, 8, 17],
-  crimson: [192, 18, 46],
+  crimson: [200, 16, 46],
   plumNoir: [26, 9, 16],
   gold: [222, 178, 110],
   blush: [242, 168, 181],

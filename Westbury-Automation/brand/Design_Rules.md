@@ -6,7 +6,7 @@ and logo.
 ## Colours
 | Role | Name | Hex |
 |---|---|---|
-| Primary field | Westbury Crimson | `#C0122E` |
+| Primary field | Westbury Crimson | `#C8102E` |
 | Depth (gradient top) | Deep Maroon | `#3F0811` |
 | Seasonal dark | Plum Noir | `#1A0910` |
 | Accent | Champagne Gold | `#DEB26E` |

@@ -25,7 +25,7 @@ Keywords: professional · trustworthy · calm · friendly · confident · knowle
 
 | Role | Name | Hex | Usage |
 |---|---|---|---|
-| Primary field | Westbury Crimson | `#C0122E` | Background base (never a small accent) |
+| Primary field | Westbury Crimson | `#C8102E` | Background base (never a small accent) |
 | Depth | Deep Maroon | `#3F0811` | Top of gradients, shadows |
 | Seasonal dark | Plum Noir | `#1A0910` | Dark-mood variants (Halloween, evening themes) |
 | Accent | Champagne Gold | `#DEB26E` | Eyebrow labels, sublines, hairline rules, small motifs |

@@ -29,7 +29,7 @@ FONTS = {
 
 # Westbury palette
 CRIMSON_DEEP = (63, 8, 17)      # gradient top
-CRIMSON = (192, 18, 46)         # gradient base / brand red
+CRIMSON = (200, 16, 46)         # gradient base / brand red (#C8102E)
 PLUM_NOIR = (26, 9, 16)         # seasonal dark variant
 GOLD = (222, 178, 110)          # champagne gold accent
 BLUSH = (242, 168, 181)         # watermark pink
