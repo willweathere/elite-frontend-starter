@@ -84,12 +84,13 @@ npm run generate
 
 **Never put your key in a file or in the code.** It goes in GitHub Secrets, which are encrypted.
 
-You need two values from Buffer:
+You only need **one** secret:
 
 - **`BUFFER_API_KEY`** — your Buffer personal API key, from **Buffer → Settings → API**.
-- **`BUFFER_CHANNEL_IDS`** — the id of the Buffer channel(s) to post to. Find these by running
-  `BUFFER_API_KEY=your_key npm run channels` (see below). More than one? Separate with commas
-  (e.g. `1234abcd,5678efgh`).
+
+The channel to post to is found **automatically** from your account. (Optional:
+`BUFFER_CHANNEL_IDS` if you want to force a specific channel; `DRY_RUN=true` to test without
+posting.)
 
 > Buffer replaced its old REST API with a GraphQL API (`https://api.buffer.com`). This project
 > uses the new one. A key from Settings > API is the right kind; an old REST/OAuth token will be

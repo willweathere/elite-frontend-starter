@@ -54,6 +54,26 @@ export async function bufferGraphQL(query, token) {
   return data.data;
 }
 
+// Fetch all channels on the account (across every organization). Used to auto-
+// discover where to post when BUFFER_CHANNEL_IDS is not set.
+export async function getChannels(token) {
+  const orgData = await bufferGraphQL(
+    `query { account { organizations { id name } } }`,
+    token
+  );
+  const orgs = orgData?.account?.organizations || [];
+  const channels = [];
+  for (const org of orgs) {
+    const d = await bufferGraphQL(
+      `query { channels(input: { organizationId: ${JSON.stringify(org.id)} }) {
+         id name displayName service isQueuePaused } }`,
+      token
+    );
+    for (const c of d?.channels || []) channels.push({ ...c, organization: org.name });
+  }
+  return channels;
+}
+
 // Build the createPost mutation. Values are JSON-stringified so quotes, newlines
 // and other characters in the caption are safely escaped. Enums stay unquoted.
 function createPostMutation({ text, channelId, imageUrl }) {
@@ -75,7 +95,7 @@ function createPostMutation({ text, channelId, imageUrl }) {
 
 export async function publishToBuffer({ text, imageUrl } = {}) {
   const token = process.env.BUFFER_API_KEY;
-  const channelIds = (process.env.BUFFER_CHANNEL_IDS || process.env.BUFFER_PROFILE_IDS || "")
+  let channelIds = (process.env.BUFFER_CHANNEL_IDS || process.env.BUFFER_PROFILE_IDS || "")
     .split(",")
     .map((s) => s.trim())
     .filter(Boolean);
@@ -85,10 +105,23 @@ export async function publishToBuffer({ text, imageUrl } = {}) {
   if (!dryRun && !token) {
     throw new Error("publishToBuffer: BUFFER_API_KEY is not set (add it as a GitHub Secret).");
   }
+
+  // If no channel id was provided, find it automatically from the account. This
+  // means the only secret you strictly need is BUFFER_API_KEY.
+  if (!dryRun && channelIds.length === 0 && token) {
+    const found = await getChannels(token);
+    channelIds = found.map((c) => c.id);
+    if (channelIds.length) {
+      console.log(
+        `[buffer] Auto-discovered ${channelIds.length} channel(s): ` +
+          found.map((c) => `${c.service} (${c.displayName || c.name})`).join(", ")
+      );
+    }
+  }
   if (!dryRun && channelIds.length === 0) {
     throw new Error(
-      "publishToBuffer: BUFFER_CHANNEL_IDS is not set. Run `npm run channels` to find your " +
-        "channel id(s), then add them (comma-separated) as a GitHub Secret."
+      "publishToBuffer: no Buffer channels found. Connect a channel in Buffer, or set " +
+        "BUFFER_CHANNEL_IDS. Run the 'Find Buffer Channels' workflow to see what is connected."
     );
   }
 
