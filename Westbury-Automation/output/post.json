@@ -1,11 +1,11 @@
 {
-  "date": "2026-08-16",
-  "id": "service-tracing",
-  "category": "Service spotlights",
-  "caption": "Sometimes the problem is not that a customer will not pay. It is that you cannot find them. Businesses move, close, or change hands, and the invoice goes unanswered.\n\nThis is where tracing helps. We locate people and businesses that have become hard to reach, so the debt can be dealt with properly rather than written off.\n\nIt is one of several services we offer alongside collection, litigation and enforcement. If a debtor has gone quiet and you are not sure where to turn next, learn more on our website.",
-  "altText": "Dark plum graphic with white serif text reading When a debtor goes quiet and the Westbury Collections logo.",
-  "imageFile": "2026-08-16-service-tracing.png",
-  "imageUrl": "https://raw.githubusercontent.com/willweathere/elite-frontend-starter/main/Westbury-Automation/output/archive/2026-08-16-service-tracing.png",
+  "date": "2026-08-17",
+  "id": "cashflow-stall",
+  "category": "Cashflow & credit-control tips",
+  "caption": "A profitable business can still run into trouble if the money it is owed arrives late. Wages, suppliers and rent do not wait, and every unpaid invoice makes the month harder to plan.\n\nChasing takes time you probably do not have, and it pulls you away from the work that actually pays. That is the real cost of late payment.\n\nBringing in help does not have to feel like a big step. It simply means the chasing gets done properly, by people who do it every day, so you can get back to running the business.\n\nGet in touch today.",
+  "altText": "Crimson graphic with white serif text reading Late invoices stall good businesses and the Westbury Collections logo.",
+  "imageFile": "2026-08-17-cashflow-stall.png",
+  "imageUrl": "https://raw.githubusercontent.com/willweathere/elite-frontend-starter/main/Westbury-Automation/output/archive/2026-08-17-cashflow-stall.png",
   "provider": "local",
   "size": "portrait",
   "status": "generated"
